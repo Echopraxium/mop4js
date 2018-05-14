@@ -1,0 +1,27 @@
+{
+  "name": "mop4js",
+  "version": "0.0.1",
+  "description": "MOP (Meta Object Protocol) for Javascript",
+  "main": "test.js",
+  "readme": "README.md",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Echopraxium/mop4js"
+  },
+  "keywords": [
+    "MOP", "Meta Object Protocol", "JOOP", "MOOP"
+    "javascript es6","interface class", "Design Patterns"
+  ],
+  "author": "Michel Kern",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Echopraxium/mop4js/issues"
+  },
+  "homepage": "https://github.com/Echopraxium/mop4js#readme",
+  "dependencies": {
+  },
+  "devDependencies": {}
+}
