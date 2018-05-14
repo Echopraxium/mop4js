@@ -2,7 +2,7 @@
 1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
 1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
 1 verbose cli   'version',
-1 verbose cli   '0.0.2' ]
+1 verbose cli   '0.0.3' ]
 2 info using npm@3.10.10
 3 info using node@v6.10.3
 4 error version No valid package.json found
@@ -13,7 +13,7 @@
 5 verbose stack     at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:446:3)
 6 verbose cwd D:\_Dev\NodeJS\github\mop4js
 7 error Windows_NT 10.0.16299
-8 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "version" "0.0.2"
+8 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "version" "0.0.3"
 9 error node v6.10.3
 10 error npm  v3.10.10
 11 error Unexpected string in JSON at position 366
