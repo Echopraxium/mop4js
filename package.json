@@ -26,6 +26,8 @@
     "url": "https://github.com/Echopraxium/mop4js/issues"
   },
   "homepage": "https://github.com/Echopraxium/mop4js#readme",
-  "dependencies": {},
+  "dependencies": {
+    "node-constants": "0.0.2"
+  },
   "devDependencies": {}
 }
