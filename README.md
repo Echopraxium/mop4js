@@ -1,18 +1,21 @@
-# mop4js
-A toy project motivated by implementing _MOP_ (_Meta Object Protocol_) for _Javascript_ ES6.
+# mop4js 
+A toy project motivated by implementing [MOP](https://en.wikipedia.org/wiki/Metaobject) (_Meta Object Protocol_) for Javascript ES6.
 
 A "learn by doing" prototype of MOP for Javascript. This project follows my quest of an _Interface class_ for Javascript (see [mixin-interface-api](https://www.npmjs.com/package/mixin-interface-api)). 
 
-As I now think that using _mixins_ is more a workaround than a _nice piece of OOP cake_, I remembered the _Meta Object Protocol_ and sought how it was applied / applicable to Javascript. I found [_JOOSE_](https://www.npmjs.com/package/joose) a successor of _JOOP_ which is itself inspired from especially _Perl's_ [_MOOSE_](https://metacpan.org/pod/distribution/Moose/lib/Moose/Manual.pod). 
+I now think that using _mixins_ is more a workaround than a "nice piece of cOOP cake". Recently, I remembered the _Meta Object Protocol_ and sought if it was applied / applicable to Javascript. I found [JOOSE](https://www.npmjs.com/package/joose) and [JOOP](https://github.com/pylover/joop), there is also a reference MOP for PERL: [MOOSE](https://metacpan.org/pod/distribution/Moose/lib/Moose/Manual.pod). 
 
-Regarding MOP (Meta Object Protocol), this paradigm is there for a while, since 1991 at least in the _"The Art of the Metaobject Protocol"_ book which describes _CLOS_, a _MOP for LISP_ (_CLOS_ is the acronym of _Common Lisp Object System_). 
+Regarding MOP (Meta Object Protocol), this paradigm is there for a while, since 1991 at least in the _"The Art of the Metaobject Protocol"_ book which describes [CLOS](https://en.wikipedia.org/wiki/Common_Lisp_Object_System), a MOP for [LISP](https://en.wikipedia.org/wiki/Lisp_(programming_language) (CLOS is the acronym of _Common Lisp Object System_). 
 
-My intent in this toy project is twofold:
-* First is: _"Give it a try"_ and share a naive and this  prototype
-* Second is: promote the usage/knowledge of _MOP_ among _Javascript developers_.  
+My intent in this toy project is two-fold: 
+* First: _"Give it a try"_ and share a naive implementation. 
+* Second: promote the usage and knowledge of MOP among Javascript developers.   
 
-## Release 0.0.9 changelog
-* First Prototype (_"Proof of concept"_) at a very early stage
+## Release 0.0.10 changelog 
+* Documentation update. 
+
+## Release 0.0.9 changelog 
+* First Prototype (_"Proof of concept"_) at a very early stage (the implementation is clumsy ATM). 
 
 Please find below a code sample:
 
@@ -30,12 +33,13 @@ console.log(logger + "\n");
 ```
 
 ## References
-* _The Art of the Metaobject Protocol_
+* The Art of the Metaobject Protocol 
   https://en.wikipedia.org/wiki/The_Art_of_the_Metaobject_Protocol
-* _JOOSE_
+* GOOPS Manual: Metaobjects and the Metaobject Protocol 
+  https://www.gnu.org/software/guile/docs/goops/Metaobjects-and-the-Metaobject-Protocol.html
+* JOOSE 
   https://www.npmjs.com/package/joose
-* _MOOSE_
+* MOOSE 
   https://metacpan.org/pod/distribution/Moose/lib/Moose/Manual.pod
-* _What's wrong with extending the DOM_  
+* What's wrong with extending the DOM 
   http://perfectionkills.com/whats-wrong-with-extending-the-dom/
-
