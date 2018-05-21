@@ -49,6 +49,12 @@ var $$ = constants({"META_META_CLASS": '$$MetaMetaClass', "META_CLASS": '$$MetaC
 var $$MetaClass = (function(...args) { 
     var $$MetaClass_this = this;
 	
+	var getName = function(instance, klass) {
+        if (klass.instance_count == undefined)
+			klass.instance_count = 0;
+		return klass.name + "_" + klass.instance_count++;
+	}; // getName()
+	
 	var getArg = function(instance, arg_name, ...args) {
         //console.log("$$.getArg args: " + args);
 	    if (args == undefined || args.length==0)
@@ -66,84 +72,80 @@ var $$MetaClass = (function(...args) {
 	        return null;
         }
     }; // getArg()
+	
+	var $$BaseClass = class {
+		constructor(...args) {
+		} // $$BaseClass constructor
+	}; // '$$BaseClass' variable
+	$$BaseClass.toString = function() {
+		return "$$BaseClass { name: '" + this.name + "',  klass: '" + this.klass.name + "' }";
+		//return "{ name: '" + this.name + "',  klass: '" + this.klass.name + "' }";
+    }; // $$BaseClass.toString()
+	$$BaseClass.inspect = function() {
+        return this.toString();
+	}; // $$BaseClass.inspect()
+				
 				
 	//------------------------------ $$MetaMetaClass ------------------------------
-    var $$MetaMetaClass_var = class {	
+    var $$MetaMetaClass_var = class extends $$BaseClass {	
 	    constructor(...args) {	
-			this.name = init_klass(this, ...args);	
-			//console.log("meta_meta_klass>  name: " + this.name); 
+		    super(...args);
+			this.name = init_klass(this, ...args);
+			
 			var $$MetaMetaClass_this = this;
 					
-            var $$MetaMetaClass = class {
+            var $$MetaMetaClass = class extends $$BaseClass {
 			    constructor(...args) {
-				    var name = init_klass(this, $$MetaMetaClass_this, ...args);
-					if (name == null)
-					{
-						if ($$MetaMetaClass_this.instance_count == undefined)
-							$$MetaMetaClass_this.instance_count = 0;
-						name = $$MetaMetaClass_this.name + "_" + $$MetaMetaClass_this.instance_count++;
-					}					
-					this.name = name;				
-                    //console.log("---------- name_value: " + name_value);
-                    //console.log(">>      name: " + this.name); 
+					super(...args);
+				    this.name = init_klass(this, $$MetaMetaClass_this, ...args);					
+
+                    this.klass = $$MetaMetaClass_this;
+					
                     var meta_meta_klass_this = this;					
 			
-					var meta_klass = class {
+					var meta_klass = class extends $$BaseClass {
 						constructor(...args) {
-							var name = init_klass(this, meta_meta_klass_this, ...args);
-					        if (name == null)
-					        {
-						        if (meta_meta_klass_this.instance_count == undefined)
-							        meta_meta_klass_this.instance_count = 0;
-						        name = meta_meta_klass_this.name + "_" + meta_meta_klass_this.instance_count++;
-					        }					
-					        this.name = name;	
-					
-							//console.log(">>      name: " + this.name);								
-                            var meta_klass = this;								
+							super(...args);
+				            this.name = init_klass(this, meta_meta_klass_this, ...args);							
+							
+							this.klass = meta_meta_klass_this;
+													
+                            var meta_klass = this;							
 								
-						    var klass = class {
+						    var klass = class extends $$BaseClass {
 							    constructor(...args) {
-								    var name = init_klass(this, meta_klass, ...args);
-							        if (name == null)
-								    {
-										if (meta_klass.instance_count == undefined)
-											meta_klass.instance_count = 0;
-										name = meta_klass.name + "_" + meta_klass.instance_count++;
-									}											
-									this.name = name;
+									super(...args);
+									this.name = init_klass(this, meta_klass, ...args);	
 									
+									this.klass = meta_klass;
+									
+									// Instance
 									this.toString = function() {
-							            //return " ----> klass: " + this.name;
-								        return "{ name: '" + this.name + "',  klass: '" + meta_klass.name + "' }";
-						            }; // klass.toString()
+										return "{ name: '" + this.name + "',  klass: '" + this.klass.name + "' }";
+						            }; // this.toString()
 						            this.inspect = function() {
 							            return this.toString();
-						            }; // klass.inspect()
+						            }; // this.inspect()
 									//console.log(">>      name: " + this.name); 
 							    } // 'klass' constructor	
 						    }; // 'klass' class variable definition
 								
-						    Object.defineProperty(klass, 'name', {value: this.name});			
+						    Object.defineProperty(klass, 'name', {value: this.name});
+                            // Klass							
 						    klass.toString = function() {
-							    //return " ----> klass: " + this.name;
 								return "{ name: '" + this.name + "',  klass: '" + meta_meta_klass_this.name + "' }";
+								//return "{ name: '" + this.name + "',  klass: '" + this.klass.name + "' }";
 						    }; // klass.toString()
-						    klass.inspect = function() {
-							    return this.toString();
-						    }; // klass.inspect()
 								 
 					        return klass;
 					    } // meta_klass constructor	
 					}; // meta_klass
 						
-                    Object.defineProperty(meta_klass, 'name', {value: this.name});						
+                    Object.defineProperty(meta_klass, 'name', {value: this.name});	
+                    // MetaKlass					
 		            meta_klass.toString = function() {
-                        return "{ name: '" + this.name + "',  klass: '" + $$.META_CLASS + "' }";
-                    }; // meta_klass.toString()
-                    meta_klass.inspect = function() {
-                        return this.toString();
-			        }; // meta_klass.inspect()						
+						return "{ name: '" + this.name + "',  klass: '" + meta_meta_klass_this.constructor.name + "' }";
+                    }; // meta_klass.toString()		
 				
 				    return meta_klass;
 				} // meta_meta_klass constructor	
@@ -165,16 +167,26 @@ var $$MetaClass = (function(...args) {
 	
 	var init_klass = function(instance, klass, ...args) {
 		var name = getArg(instance, 'name', ...args);
+		if (name == null)
+			name = getName(instance, klass);
 		
 		var msg = null;
+		
+		/*
+		console.log("init_klass:   klass.name = " + klass.name);
+		console.log("init_klass:   klass.constructor.name = " + klass.constructor.name);
+		console.log("init_klass:   instance.constructor.name = " + instance.constructor.name);
+		*/
+		
 		if (klass.name == $$.META_META_CLASS)
 		{
 			//msg = "\n>> META META Klass constructor";
-		    msg = null;
+		    //msg = null;
+			msg = ">> Meta Meta Klass constructor";
 		}
-		else if (klass.name == $$.MMETA_CLASS)
+		else if (klass.constructor.name == $$.META_META_CLASS)
 			msg = ">> Meta Klass constructor";
-		else if (name != null  ||  klass.constructor.name == $$.META_CLASS)
+		else if (klass.constructor.name == $$.META_CLASS)
 		    msg = ">> Klass constructor";
 		else
             msg = ">> Instance constructor";
@@ -190,9 +202,6 @@ var $$MetaClass = (function(...args) {
 		    console.log("init_klass:   name  = " + name);
 		*/
 		
-		//console.log("******** " + klass.constructor.name);
-		
-		//console.log(" ==== init_klass: name: " + name);
 		if (name != null)
 			instance.name = name;
 		else
@@ -203,7 +212,8 @@ var $$MetaClass = (function(...args) {
 	
 	Object.defineProperty($$MetaMetaClass_var, 'name', {value: $$.META_META_CLASS});
 	$$MetaMetaClass_var.toString = function() {
-        return " ----> meta_meta_klass.toString: " + this.name;
+        //return " ----> meta_meta_klass.toString: " + this.name;
+		return "{ name: '" + this.name + "',  klass: '" + $$.META_META_CLASS + "' }";
     }; // meta_klass.toString()
     $$MetaMetaClass_var.inspect = function() {
         return this.toString();

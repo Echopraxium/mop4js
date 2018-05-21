@@ -16,7 +16,7 @@ console.log("========== Unit Test for 'mop4js' package ==========");
 console.log("====================================================");
 
 console.log("\n---------- MetaClass Factory ----------");
-//console.log($$MetaClass);
+console.log($$MetaClass);
 
 var $$Class = new $$MetaClass({ 'name': "$$Class"});
 console.log($$Class + "\n");

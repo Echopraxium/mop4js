@@ -3,9 +3,9 @@ A toy project motivated by implementing [MOP](https://en.wikipedia.org/wiki/Meta
 
 A "learn by doing" prototype of MOP for Javascript. This project follows my quest of an _Interface class_ for Javascript (see [mixin-interface-api](https://www.npmjs.com/package/mixin-interface-api)). 
 
-I now think that using _mixins_ is more a workaround than a "nice piece of cOOP cake". Recently, I remembered the _Meta Object Protocol_ and sought if it was applied / applicable to Javascript. I found [JOOSE](https://www.npmjs.com/package/joose) and [JOOP](https://github.com/pylover/joop), there is also a reference MOP for PERL: [MOOSE](https://metacpan.org/pod/distribution/Moose/lib/Moose/Manual.pod). 
+I now think that using _mixins_ is more a workaround than a "nice piece of cOOPcake". Recently, I remembered the _Meta Object Protocol_ and sought if it was applied / applicable to Javascript. I found [JOOSE](https://www.npmjs.com/package/joose) and [JOOP](https://github.com/pylover/joop), there is also a reference MOP for PERL: [MOOSE](https://metacpan.org/pod/distribution/Moose/lib/Moose/Manual.pod). 
 
-Regarding MOP (Meta Object Protocol), this paradigm is there for a while, since 1991 at least in the _"The Art of the Metaobject Protocol"_ book which describes [CLOS](https://en.wikipedia.org/wiki/Common_Lisp_Object_System), a MOP for [LISP](https://en.wikipedia.org/wiki/Lisp_(programming_language) (CLOS is the acronym of _Common Lisp Object System_). 
+Regarding MOP (Meta Object Protocol), this paradigm is there for a while, since 1991 at least in the ["The Art of the Metaobject Protocol"](https://en.wikipedia.org/wiki/The_Art_of_the_Metaobject_Protocol) book which describes [CLOS](https://en.wikipedia.org/wiki/Common_Lisp_Object_System), a MOP for [LISP](https://en.wikipedia.org/wiki/Lisp_(programming_language)) (CLOS is the acronym of _Common Lisp Object System_). 
 
 My intent in this toy project is two-fold: 
 * First: _"Give it a try"_ and share a naive implementation. 
@@ -33,13 +33,13 @@ console.log(logger + "\n");
 ```
 
 ## References
-* The Art of the Metaobject Protocol 
-  https://en.wikipedia.org/wiki/The_Art_of_the_Metaobject_Protocol
-* GOOPS Manual: Metaobjects and the Metaobject Protocol 
-  https://www.gnu.org/software/guile/docs/goops/Metaobjects-and-the-Metaobject-Protocol.html
-* JOOSE 
-  https://www.npmjs.com/package/joose
-* MOOSE 
-  https://metacpan.org/pod/distribution/Moose/lib/Moose/Manual.pod
-* What's wrong with extending the DOM 
-  http://perfectionkills.com/whats-wrong-with-extending-the-dom/
+* The Art of the Metaobject Protocol  
+  https://en.wikipedia.org/wiki/The_Art_of_the_Metaobject_Protocol  
+* GOOPS Manual: Metaobjects and the Metaobject Protocol  
+  https://www.gnu.org/software/guile/docs/goops/Metaobjects-and-the-Metaobject-Protocol.html  
+* JOOSE  
+  https://www.npmjs.com/package/joose  
+* MOOSE  
+  https://metacpan.org/pod/distribution/Moose/lib/Moose/Manual.pod  
+* What's wrong with extending the DOM  
+  http://perfectionkills.com/whats-wrong-with-extending-the-dom/  
